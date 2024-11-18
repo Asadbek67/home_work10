@@ -1,0 +1,61 @@
+--1
+create TABLE if not exists products(
+       id serial primary key ,
+	   product_name varchar(50) not null,
+	   catigory varchar (50) not  null
+);
+
+CREATE TABLE if not exists sales ( 
+       id serial primary key,
+	   sales_name varchar(150 ) not  null,
+       quanttity int not null
+);
+
+CREATE TABLE if not exists investry (
+	id serial primary  key,
+    investry_name varchar(50),
+    stock int not null
+);
+
+
+-- 2					
+insert into products(product_name,catigory) values
+	('Laptop','Elektronik'),
+	('telefon','Elektronik'),
+	('Table ','Furniture '),
+	('Chair ','Furniture '),
+	('Notebook','Stationery ');
+
+
+insert into sales(sales_name,quanttity) 
+values
+	('Laptop',10),
+	('phone',5),
+	('table',2),
+	('pen',50);
+
+
+insert into investry(investry_name,stock) 
+values
+	('laptop',20),
+	('phone',10),
+	('chair',15),
+	('notebook',100);
+
+-- 3
+select product_name from products
+union
+select investry_name from investry;
+
+-- 4
+select product_name from products
+intersect
+select investry_name from investry;
+
+-- 5
+select product_name from products
+except
+select investry_name from investry;
+
+-- 6
+select  distinct sales_name from sales;
